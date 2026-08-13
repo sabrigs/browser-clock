@@ -30,16 +30,15 @@ header {
 
 header h1 {
     color: white;
-    font-size: 18rem;
+    font-size: clamp(12rem, 18vw, 25rem); 
     font-family: "East Sea Dokdo", sans-serif;
     line-height: 75%;
 }
 
 header p {
     color: white;
-    font-size: 3rem;
+    font-size: clamp(2rem, 3vw, 4rem);
 }
-
 
 footer {
     text-align: left;
