@@ -2,12 +2,13 @@ const wallpaper = window.document.querySelector("img#wallpaper");
 const title = window.document.querySelector("h1#title");
 const caption = window.document.querySelector("p#caption");
 const colorBackground = window.document.querySelector("body");
-const currentDate = new Date();
-const currentHour = currentDate.getHours().toString().padStart(2,"0");
-const currentMin = currentDate.getMinutes().toString().padStart(2,"0");
+let currentDate = new Date();
+let currentHour = currentDate.getHours().toString().padStart(2,"0");
+let currentMin = currentDate.getMinutes().toString().padStart(2,"0");
 
 
 function updateClock() {
+    currentDate = new Date();
     title.innerHTML = `${currentHour}:${currentMin}`;
 }
 
