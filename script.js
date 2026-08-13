@@ -1,14 +1,17 @@
-function loadLogic() {
-    const wallpaper = window.document.querySelector("main#wallpaper");
-    const title = window.document.querySelector("h1#title");
-    const caption = window.document.querySelector("p#caption");
-    const colorBackground = window.document.querySelector("body");
-    const currentDate = new Date();
-    const currentHour = currentDate.getHours().toString().padStart(2,"0");
-    const currentMin = currentDate.getMinutes().toString().padStart(2,"0");
+const wallpaper = window.document.querySelector("main#wallpaper");
+const title = window.document.querySelector("h1#title");
+const caption = window.document.querySelector("p#caption");
+const colorBackground = window.document.querySelector("body");
+const currentDate = new Date();
+const currentHour = currentDate.getHours().toString().padStart(2,"0");
+const currentMin = currentDate.getMinutes().toString().padStart(2,"0");
 
+
+function updateClock() {
     title.innerHTML = `${currentHour}:${currentMin}`;
+}
 
+function updateTheme() {
     if (currentHour >= 0 && currentHour <= 4) {
         caption.innerHTML = "Good evening, sleeper!";
         wallpaper.style.backgroundImage = "url('img/night.jpeg')";
@@ -34,5 +37,6 @@ function loadLogic() {
     }   
 }
 
-loadLogic();
-setInterval(loadLogic, 1000);
+updateClock();
+updateTheme();
+setInterval(updateClock, 1000);
