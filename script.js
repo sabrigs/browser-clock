@@ -33,3 +33,6 @@ function loadLogic() {
         colorBackground.style.backgroundColor = "#19241E";
     }   
 }
+
+loadLogic();
+setInterval(loadLogic, 1000);
