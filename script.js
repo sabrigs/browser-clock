@@ -1,18 +1,28 @@
-const wallpaper = window.document.querySelector("img#wallpaper");
-const title = window.document.querySelector("h1#title");
-const caption = window.document.querySelector("p#caption");
-const colorBackground = window.document.querySelector("body");
 let currentDate = new Date();
-let currentHour = currentDate.getHours().toString().padStart(2,"0");
-let currentMin = currentDate.getMinutes().toString().padStart(2,"0");
+let currentHour = currentDate.getHours();
+let currentMin = currentDate.getMinutes();
 
+
+function getCurrentTime() {
+    currentDate = new Date();
+    currentHour = currentDate.getHours();
+    currentMin = currentDate.getMinutes();
+}
 
 function updateClock() {
-    currentDate = new Date();
-    title.innerHTML = `${currentHour}:${currentMin}`;
+    const title = window.document.querySelector("h1#title");
+
+    const hour = currentHour.toString().padStart(2,"0");
+    const min = currentMin.toString().padStart(2,"0");
+
+    title.innerHTML = `${hour}:${min}`;
 }
 
 function updateTheme() {
+    let wallpaper = window.document.querySelector("img#wallpaper");
+    let caption = window.document.querySelector("p#caption");
+    let colorBackground = window.document.querySelector("body");
+
     if (currentHour >= 0 && currentHour <= 4) {
         caption.innerHTML = "Good evening, sleeper!";
         wallpaper.src = "img/night.jpeg";
@@ -38,6 +48,12 @@ function updateTheme() {
     }   
 }
 
+getCurrentTime();
 updateClock();
 updateTheme();
-setInterval(updateClock, 1000);
+
+setInterval( () => {
+    getCurrentTime();
+    updateClock();
+    updateTheme();
+}, 1000)
